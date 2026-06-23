@@ -1,42 +1,77 @@
-# tealium_magento2
-Magento 2.X extension to deploy Tealium code.
+# Tealium Magento 2 Integration
 
-## Introduction
-This is a pre-release of what is to become Tealium's official integration for TiQ on the Magento 2 framework. In its current state it is simply an implementation of some minimal boiler plate code for implementing and extending universal data objects (UDOs) for various page types. It relies heavily on Magento's prescribed dependency injection system and layout systems. Included is a simple script that will scaffold out boiler plate code when creating a new UDO. It allows you to specify any UDOs that it may extend, and which pages of the site the new UDO should appear on. When finished, you're left with a scaffolded template that just needs to be filled in with any data specific logic for your particular use case.
+Historical Magento 2 module for deploying Tealium tags and page-level universal data objects across an ecommerce storefront.
 
-You can get started understanding the UDO and concepts of a data layer at [https://community.tealiumiq.com/t5/Getting-Started/Getting-Started-with-The-Data-Layer/ta-p/9503](https://community.tealiumiq.com/t5/Getting-Started/Getting-Started-with-The-Data-Layer/ta-p/9503).
+This repository is the stronger public Tealium/Magento artifact and should be treated as the canonical legacy Magento 2 integration. It shows a real module structure, admin configuration, layout integration, data-layer templates, and Tealium tag rendering for common ecommerce page types.
 
-Documentation on Magento can be found at [http://devdocs.magento.com/](http://devdocs.magento.com/).
+## What This Demonstrates
+
+- Magento 2 module architecture.
+- Admin configuration for Tealium account, profile, and environment settings.
+- Page-level data-layer deployment through universal data objects.
+- Frontend layout XML coverage for catalog, product, checkout, customer, CMS, search, and sales pages.
+- Enterprise partner/ecommerce integration work for a customer-data platform.
+
+## Module Coverage
+
+The extension includes layout hooks and templates for flows such as:
+
+- Global storefront pages.
+- Catalog category and product detail pages.
+- Search result pages.
+- Cart, checkout, and order success pages.
+- Customer account pages.
+- Guest sales, invoice, shipment, and credit memo pages.
 
 ## Installation
-### Install via Magento Marketplace
-You can install the Tealium Magento Extension free via the Magento Marketplace: https://marketplace.magento.com/tealium-tags.html
 
-### Alternative (manual) Install with Ubuntu
-You need to copy the Tealium folder from Github to app/code within your Magento folder.  If app/code doesn’t exist, create it.
+### Magento Marketplace
 
-Run the following commands:
-```
+The original extension was distributed through Magento Marketplace:
+
+https://marketplace.magento.com/tealium-tags.html
+
+### Manual Install
+
+Copy the `Tealium` folder into `app/code` within a Magento installation. If `app/code` does not exist, create it.
+
+Then run:
+
+```bash
 sudo php bin/magento setup:upgrade
-
 sudo php -d set_time_limit=3600 -d memory_limit=1024M bin/magento setup:di:compile
 ```
 
-## Configure
-In the admin panel under store configuration, you can set the  options for the extension (Stores->Configuration->Tealium->Tags). You will need to enable it, and define your TiQ account, profile, and environment information.
+## Configuration
 
+In the Magento admin panel, go to `Stores -> Configuration -> Tealium -> Tags`.
+
+Configure:
+
+- Extension enabled/disabled state.
+- Tealium iQ account.
+- Tealium iQ profile.
+- Tealium environment.
+
+## Data-Layer Context
+
+The extension uses Tealium universal data objects as the page-level contract between Magento and Tealium iQ. Tealium's data-layer concepts are documented here:
+
+https://community.tealiumiq.com/t5/Getting-Started/Getting-Started-with-The-Data-Layer/ta-p/9503
+
+## Repository Status
+
+This is a legacy Magento 2 integration and should not be evaluated as a current Magento/PHP package without dependency and compatibility review. Its portfolio value is the enterprise integration pattern: packaging a customer-data platform into a commerce ecosystem with admin configuration, data-layer scaffolding, and page-specific implementation points.
 
 ## Change Log
 
-- 1.0.1 Release
-    - Default UDO (utag_data JSON object in page source) deployed via Magento Extension to match Tealium iQ TMS Data Layer bundle
-    - Configure account info in admin panel
-    - Extend and customize UDOs
-
+- `1.0.1` release
+  - Default UDO (`utag_data` JSON object in page source) deployed via Magento extension to match the Tealium iQ TMS Data Layer bundle.
+  - Account/profile/environment configuration in Magento admin.
+  - Extensible UDO support for customization.
 
 ## License
 
-Use of this software is subject to the terms and conditions of the license agreement contained in the file titled "LICENSE.txt".  Please read the license before downloading or using any of the files contained in this repository. By downloading or using any of these files, you are agreeing to be bound by and comply with the license agreement.
+Use of this software is subject to the terms and conditions of the license agreement contained in `LICENSE.txt`.
 
----
 Copyright (C) 2012-2018, Tealium Inc.

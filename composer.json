@@ -1,6 +1,6 @@
 {
     "name": "tealium/tags",
-    "description": "",
+    "description": "Historical Magento 2 module for deploying Tealium tags and universal data objects across ecommerce pages.",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0|7.1.*"
     },
@@ -10,7 +10,7 @@
     "type": "magento2-module",
     "version": "0.8.1-RC",
     "license": [
-
+        "proprietary"
     ],
     "autoload": {
         "files": [
